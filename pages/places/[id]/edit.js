@@ -7,7 +7,7 @@ export default function EditPage() {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data, isLoading, mutate } = useSWR(`/api/places/${id}`);
+  const { data, isLoading } = useSWR(`/api/places/${id}`);
 
   console.log(data);
   async function handleEditPlace(placeData) {
