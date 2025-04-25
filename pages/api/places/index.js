@@ -5,13 +5,16 @@ export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === 'GET') {
-    const places = await Place.find();
-    if (!places) {
-      response.status(404).json({message: 'Not found.'});
-      return;
+    try {
+      const places = await Place.find();
+      if (!places) {
+        return response.status(404).json({message: 'Not found.'});
+      }
+      return response.status(200).json(places);
+    } catch (e) {
+      console.error(e);
+      return response.status(500).json({message: 'Error creating place'});
     }
-    response.status(200).json(places);
-    return;
   }
   if (request.method === 'POST') {
     try {
