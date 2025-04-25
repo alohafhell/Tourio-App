@@ -10,6 +10,6 @@ const placesSchema = new Schema({
   description: { type: String, require: true },
 });
 
-const Places = mongoose.models.Places || mongoose.model("Places", placesSchema);
+const Place = mongoose.models.Place || mongoose.model("Place", placesSchema);
 
-export default Places;
+export default Place;
