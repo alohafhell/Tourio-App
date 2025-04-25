@@ -1,6 +1,6 @@
 import {places} from '@/lib/db';
 import dbConnect from '@/db/connect';
-import Places from '@/db/models/Places';
+import Place from '@/db/models/Place';
 
 export default async function handler(request, response) {
   await dbConnect();
@@ -14,7 +14,7 @@ export default async function handler(request, response) {
   }
 
   if (request.method === 'DELETE') {
-    await Places.findByIdAndDelete(id);
+    await Place.findByIdAndDelete(id);
     return response.status(200).json({status: 'Place deleted successfully'});
   }
 
